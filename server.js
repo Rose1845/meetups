@@ -5,7 +5,8 @@ const path =require('path')
 const FeedbackService = require('./services/FeedbackService')
 const SpeakerService = require('./services/SpeakerService')
 
-const feedbackService = new FeedbackService('../')
+const feedbackService = new FeedbackService('./data/feedback.json')
+const speakerService = new SpeakerService('./data/speakers.json')
 
 const app =express();
 const routes = require('./routes')
@@ -18,7 +19,10 @@ app.set('views',path.join(__dirname,'./views'))
 
 app.use(express.static(path.join(__dirname,'./static')))
 
-app.use('/',routes())
+app.use('/',routes({
+    feedbackService,
+    speakerService
+}))
 
 app.get('/speakers',(req,res)=>{
     res.sendFile(path.join(__dirname,'./static/speakers.html'))
