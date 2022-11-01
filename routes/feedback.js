@@ -9,7 +9,7 @@ module.exports = (params)=>{
         const feedback = await feedbackService.getList()
         return res.json(feedback)
     })
-    router.post('/feedback',(req,res)=>{
+    router.post('/',(req,res)=>{
         return res.send('feedback form posted')
     })
     

@@ -5,10 +5,11 @@ const path =require('path')
 const FeedbackService = require('./services/FeedbackService')
 const SpeakerService = require('./services/SpeakerService')
 
-const feedbackService = new FeedbackService('./data/feedback.json')
-const speakerService = new SpeakerService('./data/speakers.json')
+const feedbackService = new FeedbackService('data/feedback.json')
+const speakerService = new SpeakerService('data/speakers.json')
 
 const app =express();
+
 const routes = require('./routes')
 
 const port = 3000;

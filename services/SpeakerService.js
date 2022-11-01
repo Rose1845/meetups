@@ -116,3 +116,4 @@ class SpeakerService {
     return JSON.parse(data).speakers;
   }
 }
+module.exports = SpeakerService
