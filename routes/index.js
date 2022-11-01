@@ -8,7 +8,7 @@ const feedbackRoute = require('./feedback')
 
 module.exports = (params) =>{
     router.get('/',(req,res)=>{
-        res.render('pages/index',{pageTitle:'welcome'})
+        res.render('layout',{pageTitle:'welcome',template:'index'})
     })
     router.use('/speakers',speakersRoute(params))
     router.use('/feedback',feedbackRoute(params))
