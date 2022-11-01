@@ -2,7 +2,10 @@ const express =require('express')
 
 const path =require('path')
 
-const FeedbackService = require('./')
+const FeedbackService = require('./services/FeedbackService')
+const SpeakerService = require('./services/SpeakerService')
+
+const feedbackService = new FeedbackService('../')
 
 const app =express();
 const routes = require('./routes')
