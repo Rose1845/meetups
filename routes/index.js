@@ -6,12 +6,12 @@ const speakersRoute = require('./speakers')
 const feedbackRoute = require('./feedback')
 
 
-module.exports = ()=>{
+module.exports = (params) =>{
     router.get('/',(req,res)=>{
         res.render('pages/index',{pageTitle:'welcome'})
     })
-    router.use('/speakers',speakersRoute)
-    router.use('/feedback',feedbackRoute)
+    router.use('/speakers',speakersRoute(params))
+    router.use('/feedback',feedbackRoute(params))
     return router
 }
 
