@@ -3,9 +3,11 @@ const express =require('express')
 const path =require('path')
 
 const FeedbackService = require('./services/FeedbackService')
+
 const SpeakerService = require('./services/SpeakerService')
 
 const feedbackService = new FeedbackService('data/feedback.json')
+
 const speakerService = new SpeakerService('data/speakers.json')
 
 const app =express();
@@ -18,7 +20,14 @@ app.set('view engine','ejs')
 
 app.set('views',path.join(__dirname,'./views'))
 
+app.locals.siteName = 'Eucossa MeetUps'
+
 app.use(express.static(path.join(__dirname,'./static')))
+
+// app.use((req,res,next)=>{
+//     req.locals.someVariable = 'hello'
+//     return next()
+// })
 
 app.use('/',routes({
     feedbackService,
