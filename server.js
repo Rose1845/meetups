@@ -30,6 +30,12 @@ app.use(async(req,res,next)=>{
     return next()
 })
 
+app.get('/throw',(req,res,next)=>{
+    setTimeout(()=>{
+       return next(new Error('something is wrong'))
+    },5000)
+})
+
 app.use('/',routes({
     feedbackService,
     speakerService
