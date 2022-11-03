@@ -15,7 +15,7 @@ const app =express();
 
 const routes = require('./routes')
 
-const port = 5000;
+const port = 3000;
 
 app.set('view engine','ejs')
 
@@ -48,10 +48,18 @@ app.use('/',routes({
 app.get('/speakers',(req,res)=>{
     res.sendFile(path.join(__dirname,'./static/speakers.html'))
 })
-
+// error handle page
 app.use((req,res,next)=>{
     return next(createError(404,'File not found'))
 
+})
+
+app.use((err,req,res)=>{
+    res.locals.message = err.message
+    const status = err.status || 500
+    req.locals.status = status
+    res.status(status)
+    res.render('error')
 })
  
 app.listen(port,()=>{
