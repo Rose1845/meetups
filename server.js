@@ -14,7 +14,7 @@ const app =express();
 
 const routes = require('./routes')
 
-const port = 3000;
+const port = 5000;
 
 app.set('view engine','ejs')
 
