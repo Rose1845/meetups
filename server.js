@@ -24,10 +24,11 @@ app.locals.siteName = 'Eucossa MeetUps'
 
 app.use(express.static(path.join(__dirname,'./static')))
 
-// app.use((req,res,next)=>{
-//     req.locals.someVariable = 'hello'
-//     return next()
-// })
+app.use(async(req,res,next)=>{
+    const names = await speakerService.getNames()
+    res.locals.speakerNames = names
+    return next()
+})
 
 app.use('/',routes({
     feedbackService,
