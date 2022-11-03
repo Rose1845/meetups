@@ -1,6 +1,7 @@
 const express =require('express')
 
 const path =require('path')
+const createError = require('http-errors')
 
 const FeedbackService = require('./services/FeedbackService')
 
@@ -46,6 +47,11 @@ app.use('/',routes({
 
 app.get('/speakers',(req,res)=>{
     res.sendFile(path.join(__dirname,'./static/speakers.html'))
+})
+
+app.use((req,res,next)=>{
+    return next(createError(404,'File not found'))
+
 })
  
 app.listen(port,()=>{
