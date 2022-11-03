@@ -25,16 +25,19 @@ app.locals.siteName = 'Eucossa MeetUps'
 app.use(express.static(path.join(__dirname,'./static')))
 
 app.use(async(req,res,next)=>{
-    const names = await speakerService.getNames()
-    res.locals.speakerNames = names
-    return next()
+    try{
+        const names = await speakerService.getNames()
+         res.locals.speakerNames = names
+         return next()
+
+    }catch (err){
+        return next(err)
+    }
+    
+   
 })
 
-app.get('/throw',(req,res,next)=>{
-    setTimeout(()=>{
-       return next(new Error('something is wrong'))
-    },5000)
-})
+
 
 app.use('/',routes({
     feedbackService,
