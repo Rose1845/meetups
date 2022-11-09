@@ -1,5 +1,4 @@
-
-  <div class="container mt-4">
+<div class="container mt-4">
     <div class="row">
       <div class="col-md-4">
         <div class="maincontent">
@@ -31,42 +30,24 @@
           <h1>Recent Feedback</h1>
 
           <div class="feedback-items">
-
-            <div class="feedback-item item-list media-list">
-              <div class="feedback-item media">
-                <div class="feedback-info media-body">
-                  <div class="feedback-head">
-                    <div class="feedback-title">Impressive</div>
-                    <small>by Jane</small>
-                  </div>
-                  <div class="feedback-message">Please do it again</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="feedback-item item-list media-list">
-              <div class="feedback-item media">
-                <div class="feedback-info media-body">
-                  <div class="feedback-head">
-                    <div class="feedback-title">I'll be back
+            <% feedback.forEach(function(item){%>
+                <div class="feedback-item item-list media-list">
+                    <div class="feedback-item media">
+                      <div class="feedback-info media-body">
+                        <div class="feedback-head">
+                          <div class="feedback-title"><%= item.title %> </div>
+                          <small>by <%=item.name %> </small>
+                        </div>
+                        <div class="feedback-message"><%=item.message  %> </div>
+                      </div>
                     </div>
-                    <small>by James</small>
                   </div>
-                  <div class="feedback-message">I'm happy that I was there</div>
-                </div>
-              </div>
-            </div>
-            <div class="feedback-item item-list media-list">
-              <div class="feedback-item media">
-                <div class="feedback-info media-body">
-                  <div class="feedback-head">
-                    <div class="feedback-title">Great Speaker</div>
-                    <small>by Melissa</small>
-                  </div>
-                  <div class="feedback-message">This was a great meetup!</div>
-                </div>
-              </div>
-            </div>
+
+                <%}) %> 
+
+            
+
+
           </div>
         </div>
       </aside>
