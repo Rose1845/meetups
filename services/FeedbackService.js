@@ -30,6 +30,7 @@ class FeedbackService {
    * @param {*} name The name of the user
    * @param {*} title The title of the feedback message
    * @param {*} message The feedback message
+   * @param {*} email 
    */
   async addEntry(name, email, title, message) {
     const data = (await this.getData()) || [];
